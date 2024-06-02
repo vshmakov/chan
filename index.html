@@ -14,7 +14,7 @@
     var stockfish = new Worker(wasmSupported ? 'stockfish.wasm.js' : 'stockfish.js');
 
     stockfish.addEventListener('message', function (e) {
-        console.log(e.data, wasmSupported);
+        console.log(e.data);
     });
 
     stockfish.postMessage('uci');
