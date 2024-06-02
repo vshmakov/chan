@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "lila-stockfish-web": "^0.0.5"
+  }
+}
