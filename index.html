@@ -8,16 +8,25 @@
     <title>Document</title>
 </head>
 <body>
+<div id="main"></div>
 <script>
     var wasmSupported = typeof WebAssembly === 'object' && WebAssembly.validate(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
 
-    var stockfish = new Worker(wasmSupported ? 'stockfish.wasm.js' : 'stockfish.js');
+    var stockfish = new Worker(wasmSupported ? 'stockfish.js/stockfish.wasm.js' : 'stockfish.js');
+
+    const $main=document.getElementById('main')
+    const messages=[]
+
 
     stockfish.addEventListener('message', function (e) {
-        console.log(e.data, wasmSupported);
+        messages.push(e.data)
+        $main.innerHTML=messages.join('<br>')
     });
 
     stockfish.postMessage('uci');
+    stockfish.postMessage("ucinewgame");
+    stockfish.postMessage("position startpos");
+    stockfish.postMessage("go depth 20");
     </script>
 </body>
 </html>
