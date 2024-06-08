@@ -25,8 +25,9 @@
 
     stockfish.postMessage('uci');
     stockfish.postMessage("ucinewgame");
-    stockfish.postMessage("position startpos");
-    stockfish.postMessage("go depth 20");
+    stockfish.postMessage('position startpos move e2e4 e7e5 g1f3 d8h4 f3h4')
+    stockfish.postMessage('go movetime 3000')
+    // stockfish.postMessage("go depth 20");
     </script>
 </body>
 </html>
